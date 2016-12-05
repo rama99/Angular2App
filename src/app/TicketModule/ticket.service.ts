@@ -81,16 +81,19 @@ export class TicketService
 
 	SearchTickets(searchOptions:TicketSearches): Observable<Array<TicketResponse>> {
 
-		    let SearchTickets:Array<TicketResponse>;
+		    let SearchTickets:Array<TicketResponse> = this.TicketsCollection;
 
 		    //-- TicketID search option
-		    if(searchOptions.ticketID > 0) 
+			console.log('Ticket ID' , +searchOptions.ticketID , +searchOptions.ticketID);
+
+			let ticketID = +searchOptions.ticketID;
+		    if(ticketID > 0) 
 		    {
-		    SearchTickets = this.TicketsCollection.filter((ticket:TicketResponse) => {
-			
-				return ticket.ticketID == searchOptions.ticketID;
+		    SearchTickets = this.TicketsCollection.filter((ticket:TicketResponse) => {				
+				return ticket.ticketID == ticketID;
 			});
 		    }
+						
 
 		    //-- Ticket status search option
 		    if(searchOptions.statusID != "") {
@@ -103,6 +106,13 @@ export class TicketService
 		    if(searchOptions.severityID != "") {
 		    	SearchTickets = SearchTickets.filter((ticket:TicketResponse) => {
 		    		return ticket.severityName == searchOptions.severityID;
+		    	})
+		    }
+
+			//-- Ticket Project option
+		    if(searchOptions.projectID != "") {
+		    	SearchTickets = SearchTickets.filter((ticket:TicketResponse) => {
+		    		return ticket.projectName == searchOptions.projectID;
 		    	})
 		    }
 

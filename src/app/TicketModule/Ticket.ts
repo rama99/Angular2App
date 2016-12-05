@@ -46,6 +46,7 @@ export interface TicketSearches {
   severityID:string;
   statusID:string;
   ticketID:number;
+  //ticketID:string;
 }
 
 export interface DashBoard {
