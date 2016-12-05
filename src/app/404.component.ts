@@ -9,7 +9,6 @@ template:`
 Page Not Found 404<br>
 <a routerLink="/home">Home Screen</a>
 </div>
-
 `
 })
 
