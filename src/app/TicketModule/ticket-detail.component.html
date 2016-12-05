@@ -1,0 +1,53 @@
+<div class="row" *ngIf="ticket">
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <h3><label class="col-sm-8 control-label">Ticket Details of:</label></h3>
+    <div class="col-sm-4">
+      <h3><p class="form-control-static">{{ticket?.ticketID}}</p></h3>
+    </div>
+  </div> 
+  <div class="form-group">
+    <h3><label class="col-sm-4 control-label">Title:</label></h3>
+    <div class="col-sm-8">
+      <h3><label class="control-label">{{ticket?.title}}</label></h3>
+    </div>
+  </div>
+  <div class="form-group">
+    <h3><label class="col-sm-4 control-label">Description:</label></h3>
+    <div class="col-sm-8">
+      <p class="form-control-static">{{ticket?.description}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <h3><label class="col-sm-4 control-label">Date:</label></h3>
+    <div class="col-sm-8">
+      <h3><p class="form-control-static">{{ticket?.createdDate | date}}</p></h3>
+    </div>
+  </div>
+  <div class="form-group">
+    <h3><label class="col-sm-4 control-label">Project Name:</label></h3>
+    <div class="col-sm-8">
+      <h3><p class="form-control-static">{{ticket?.projectName}}</p></h3>
+    </div>
+  </div>
+  <div class="form-group">
+    <h3><label class="col-sm-4 control-label">Severity:</label></h3>
+    <div class="col-sm-8">
+      <h3><p class="form-control-static">{{ticket?.severityName}}</p></h3>
+    </div>
+  </div>
+  <div class="form-group">
+    <h3><label class="col-sm-4 control-label">Status:</label></h3>
+    <div class="col-sm-8">
+      <h3><p class="form-control-static">{{ticket?.statusText}}</p></h3>
+    </div>
+  </div> 
+</form>
+ <div *ngFor="let comment of ticket.comments">
+ {{comment.commentID}}
+ {{comment.commentDate | date}}
+ {{comment.commentText}}
+ </div>
+ </div>
+ 

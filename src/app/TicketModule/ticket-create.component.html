@@ -1,0 +1,51 @@
+<h2><span class="label label-default">Create Ticket</span></h2>
+
+<div name="errorMsgs" *ngIf="errors">
+<ul>
+<li *ngFor="let error of errors">
+<small>{{error}}</small>
+</li>
+</ul>
+</div>
+
+<form  [formGroup]="fg" (ngSubmit)="onSubmit(fg.value)">
+  <div class="form-group">
+    <label for="title"><h3>Title</h3></label>
+     <input type="text" #title maxlength="50" id="title" class="form-control" formControlName="title">
+  </div>
+  <div class="form-group">
+    <label for="description"><h3>Description</h3></label>
+    <input type="text" id="description" maxlength="200" class="form-control" formControlName="description">
+  </div>
+  <div class="form-group">
+    <label for="projectID"><h3>Project</h3></label>    
+    <select [value]="''" id="projectID" class="form-control" formControlName="projectID">
+ 	<option [value]="project.projectID" *ngFor="let project of projects |async"> {{project.projectName}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="severityID"><h3>Severity</h3></label>    
+    <select [value]="''" id="severityID" class="form-control"   formControlName="severityID">
+ 	<option [value]="severity.severityID" *ngFor="let severity of severities | async">
+ 		{{severity.severityName}}
+ 	</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="statusID"><h3>Status</h3></label>    
+    <select class="form-control" id="statusID" formControlName="statusID">
+ 	<option [value]="status.statusID" *ngFor="let status of statuses | async">
+ 		{{status.statusText}}
+ 	</option>
+ </select>
+  </div>
+
+  <div class="form-group">
+    <label for="comments"><h3>Comment</h3></label>    
+    <textarea id="comments" maxlength="200" class="form-control" [formControl]="fg.get('comments').at(0).get('commentText')"></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary" value="Create">&nbsp;<input type="button" class="btn btn-info" value="Reset" (click)="onReset()">
+
+</form>
+

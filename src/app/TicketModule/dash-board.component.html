@@ -1,0 +1,14 @@
+<h2><span class="label label-default">Dashboard</span></h2>
+<br><div>
+<form class="form-group" [formGroup]="formgroup">
+	<select #projectField class="form-control" formControlName="projectID">
+		<option [value]="project.projectID" *ngFor="let project of projects$ | async">
+		{{project.projectName}}
+		</option>
+	</select>
+
+	<div *ngFor="let detail of dashboardDetails$ | async">
+	{{detail | json}}
+	</div>
+</form>
+</div>

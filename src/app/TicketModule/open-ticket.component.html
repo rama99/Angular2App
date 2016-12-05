@@ -1,0 +1,31 @@
+<h2><span class="label label-default">Open Tickets</span></h2>
+<div>
+
+<table class="table table-condensed">
+<thead>
+	<tr>
+		<th><h3>Ticket ID</h3></th>
+		<th><h3>Title</h3></th>
+		<th><h3>Project</h3></th>
+		<th><h3>Status</h3></th>
+		<th><h3>Severity</h3></th>
+		<th></th>
+		<th></th>
+	</tr>
+</thead>
+<tbody>
+	<tr *ngFor="let openTicket of openTickets$ | async">
+		<td><small>{{openTicket.ticketID}}</small></td>
+		<td><small>{{openTicket.title}}</small></td>
+		<td><small>{{openTicket.projectName}}</small></td>
+		<td><small>{{openTicket.statusText}}</small></td>
+		<td><small>{{openTicket.severityName}}</small></td>
+		<td><small><input type="button" class="btn btn-sm btn-primary" value="More.." (click)="onMoreDetails(openTicket)"></small></td>
+		<td><small><input type="button" class="btn btn-sm btn-primary" value="Edit" (click)="onEdit(openTicket.ticketID)"></small></td>
+	</tr>
+</tbody>
+</table>
+</div>
+
+
+<ticket-detail [ticket]="selectedTicket"></ticket-detail>

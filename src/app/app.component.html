@@ -1,3 +1,21 @@
-<h1>
-  {{title}}
+<h1> 
+  <div *ngIf="service.isValidUser()" class="btn-group btn-group-justified" role="group" aria-label="...">
+  
+  <div class="btn-group" role="group">
+  <a routerLink="/home" routerLinkActive="active" class="btn btn-info">Home</a>
+  </div>
+  <div class="btn-group" role="group">
+	<a routerLink="/tickets" routerLinkActive="active" class="btn btn-info">Tickets</a>
+  </div>
+  <div class="btn-group" role="group"> 
+   	<a routerLink="/about" routerLinkActive="active" class="btn btn-info">About Application</a>
+  </div>
+  <div class="btn-group" role="group">
+	 <a (click)="onLogOut()" routerLinkActive="active" class="btn btn-info">Logout</a>
+  </div>  
+  <div class="btn-group" role="group">  
+   <label class="btn btn-info">User Name:&nbsp;<strong>{{service.fullName}}</strong></label>
+  </div>
+  </div> 
+  <router-outlet></router-outlet>
 </h1>
