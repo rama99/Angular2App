@@ -47,7 +47,8 @@ export class TicketEditComponent implements OnInit {
 	constructor( private service: TicketService ,
 	             private fb: FormBuilder ,
 	             private route: ActivatedRoute ,
-	             title: Title
+	             title: Title,
+				 private router: Router
 	           ) 
 	{ 
 
@@ -83,6 +84,9 @@ export class TicketEditComponent implements OnInit {
 
 		this.fg.controls['title'].setValue(this.editTicket.title);
 		this.fg.controls['description'].setValue(this.editTicket.description);
+		this.fg.controls['projectID'].setValue(this.editTicket.projectName);
+		this.fg.controls['severityID'].setValue(this.editTicket.severityName);
+		this.fg.controls['statusID'].setValue(this.editTicket.statusText);
 		//this.fg.controls['commentText']
 		// this.fg.controls['description']
 		this.AddComment();
@@ -102,5 +106,10 @@ export class TicketEditComponent implements OnInit {
 		control.push(this.initComment());
 	}
 
+onEdit(editRequest: any) {
+alert('Need to add edit save logic');
+this.router.navigate(['tickets/ticketsopen']);
+
+}
 
 }

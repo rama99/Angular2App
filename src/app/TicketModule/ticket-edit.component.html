@@ -7,7 +7,7 @@
 </ul>
 </div>
 
-<form  [formGroup]="fg" (ngSubmit)="onSubmit(fg.value)">
+<form  [formGroup]="fg" (ngSubmit)="onEdit(fg.value)">
   <div class="form-group">
     <label for="title"><h3>Title</h3></label>
      <input type="text" id="title" class="form-control" formControlName="title">
@@ -18,13 +18,13 @@
   </div>
   <div class="form-group">
     <label for="projectID"><h3>Project</h3></label>    
-    <select [value]="0" id="projectID" class="form-control" formControlName="projectID">
+    <select  id="projectID" class="form-control" formControlName="projectID">
  	<option [value]="project.projectID" *ngFor="let project of projects$ |async"> {{project.projectName}}</option>
     </select>
   </div>
   <div class="form-group">
     <label for="severityID"><h3>Severity</h3></label>    
-    <select [value]="''" id="severityID" class="form-control"   formControlName="severityID">
+    <select  id="severityID" class="form-control"   formControlName="severityID">
  	<option [value]="severity.severityID" *ngFor="let severity of severities$ | async">
  		{{severity.severityName}}
  	</option>
