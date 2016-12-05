@@ -33,7 +33,7 @@ export class TicketEditComponent implements OnInit {
 	editTicket:TicketResponse;
 	errors:Array<string> = [];
 	fg:FormGroup;
-	id:any;
+	id:number;
 
 	private errorMessages = [
  								{field:'title' , message:'Title is required.'},
@@ -75,7 +75,7 @@ export class TicketEditComponent implements OnInit {
 		this.statuses$ = this.service.GetStatuses();
 
 		this.route.params.forEach( (params:Params) => {
-			this.id = params['id'];		
+			this.id = +params['id'];		
 		});
 
 		this.service.GetTicketByID(this.id).subscribe( (ticket) => {
