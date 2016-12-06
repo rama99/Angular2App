@@ -4,7 +4,8 @@ import { Component ,
 	     Renderer ,
 	     ViewChild ,
 	     ElementRef ,
-	     AfterViewInit } from '@angular/core';
+	     AfterViewInit ,
+		 DoCheck } from '@angular/core';
 import { Router , 
 	     ActivatedRoute } from '@angular/router';
 import { FormBuilder , 
@@ -24,7 +25,7 @@ templateUrl:'./dash-board.component.html'
 })
 
 
-export class DashBoardComponent implements OnInit , AfterViewInit {
+export class DashBoardComponent implements OnInit , AfterViewInit , DoCheck {
 
 	dashboardDetails$:Observable<Array<DashBoard>>;
 	projects$:Observable<Array<Project>>;
@@ -46,7 +47,8 @@ export class DashBoardComponent implements OnInit , AfterViewInit {
 
 		this.formgroup.controls['projectID'].valueChanges.subscribe( (value) => {
 			console.log(value);
-		this.dashboardDetails$ = this.service.DashBoard(value);
+			alert('dashboard');
+		   this.dashboardDetails$ = this.service.DashBoard(value);
 		});
 
 		title.setTitle('Dashboard Screen');
@@ -58,6 +60,10 @@ export class DashBoardComponent implements OnInit , AfterViewInit {
 
 	ngAfterViewInit() {
 		this.renderer.invokeElementMethod(this.projectField.nativeElement , 'focus');
+	}
+	
+	ngDoCheck() {
+
 	}
 
 }

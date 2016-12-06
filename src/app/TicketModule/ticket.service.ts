@@ -15,22 +15,7 @@ import 'rxjs/add/Observable/of';
 export class TicketService
 {	
 
-	private TicketsCollection = [
-			/*{ ticketID:1 , title:'Title-1' , description:'Desc-1' ,
-		      projectName:'proj-1' , severityName:'S-1' , statusText:'status-1',
-              createdDate:new Date(),comments:[ 
-              {commentID:11 , commentDate:'date here-11' , commentText:'comment text-11'},
-              {commentID:12 , commentDate:'date here-12' , commentText:'comment text-12'}
-              ]
-		    },
-		    { ticketID:2 , title:'Title-2' , description:'Desc-2' ,
-		      projectName:'proj-2' , severityName:'S-2' , statusText:'status-2',
-              createdDate:new Date(),comments:[ 
-              {commentID:21 , commentDate:'date here-21' , commentText:'comment text-21'},
-              {commentID:22 , commentDate:'date here-22' , commentText:'comment text-22'}
-              ] 
-		    }*/
-		];
+	private TicketsCollection = [];
 
 	constructor(private http:Http) { }
 
@@ -127,10 +112,14 @@ export class TicketService
 
 	DashBoard(projectID: number):Observable<Array<DashBoard>> {
 
-		let dashBoardDetails = [
-			{projectName:'Banking' , statusText:'LOW' , statusCount:90},
+	/*	let dashBoardDetails = [
+			{projectName:'Banking' , statusText:'LOW' , statusCount:92},
 			{projectName:'Insurance' , statusText:'MEDIUM' , statusCount:92}
-		];
+		];*/
+
+		let dashBoardDetails = this.TicketsCollection.map( (t:TicketResponse) => {
+			return {'projectName': t.projectName , 'severityName':t.severityName , 'statusText': t.statusText}
+		}) 
 
 		return Observable.of(dashBoardDetails);
 	}

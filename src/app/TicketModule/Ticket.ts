@@ -51,6 +51,7 @@ export interface TicketSearches {
 
 export interface DashBoard {
   projectName:string;
+  severityName:string;
   statusText:string;
   statusCount:number;
 }
