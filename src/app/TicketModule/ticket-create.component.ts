@@ -108,6 +108,8 @@ onSubmit(ticket:TicketRequest) {
        this.router.navigate(['/tickets/ticketsopen']);
        //this.router.navigate(['/home']);
     }
+
+   
  }
 
  //-- reset the form

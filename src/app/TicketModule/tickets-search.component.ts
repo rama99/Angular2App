@@ -16,7 +16,8 @@ import { TicketResponse ,
 import { FormGroup , 
 	     FormArray , 
 	     FormBuilder , 
-	     FormControl } from '@angular/forms';	      
+	     FormControl } from '@angular/forms';	   
+import { Router } from '@angular/router';		    
 
 @Component({
 selector:'ticket-search',
@@ -39,7 +40,8 @@ export class TicketsSearchComponent implements OnInit , AfterViewInit  {
 	constructor( private service: TicketService , 
 		         private fb: FormBuilder,
 		         title:Title,
-		         private renderer: Renderer) 
+		         private renderer: Renderer,
+				 private router: Router) 
 	{
 		this.formgroup =  this.fb.group({
 			                         "projectID": [""],
@@ -81,5 +83,9 @@ export class TicketsSearchComponent implements OnInit , AfterViewInit  {
 
 	onMoreDetails(ticket:TicketResponse) {
 		this.selectedTicket = ticket;
+	}
+
+	onEdit(id) {
+		this.router.navigate(['tickets/edit' , id]);
 	}
 }

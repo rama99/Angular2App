@@ -6,12 +6,12 @@ import { FormControl ,
 	     FormArray ,
 	     Validators } from '@angular/forms';
 import { Observable }	from 'rxjs/Observable';
-import { Router , 
+import { Router, 
 	     ActivatedRoute ,
 	     Params } from '@angular/router';     
 
-import { Project , 
-	     Severity , 
+import { Project, 
+	     Severity, 
 	     Status , 
 	     TicketRequest , 
 	     TicketResponse } from './Ticket';
@@ -36,12 +36,12 @@ export class TicketEditComponent implements OnInit {
 	id:number;
 
 	private errorMessages = [
- 								{field:'title' , message:'Title is required.'},
- 								{field:'description' , message:'Description is required.'},
- 								{field:'projectID' , message:'Select a Project.'},
- 								{field:'severityID' , message:'Select a Severity.'},
- 								{field:'statusID' , message:'Select a Status.'},
- 								{field:'comments' , message:'Comments are required.'}
+ 								{field: 'title' , message: 'Title is required.'},
+ 								{field: 'description' , message: 'Description is required.'},
+ 								{field: 'projectID' , message: 'Select a Project.'},
+ 								{field: 'severityID' , message: 'Select a Severity.'},
+ 								{field: 'statusID' , message: 'Select a Status.'},
+ 								{field: 'comments' , message: 'Comments are required.'}
 							];
 
 	constructor( private service: TicketService ,
@@ -82,6 +82,7 @@ export class TicketEditComponent implements OnInit {
 			this.editTicket = ticket;
 		});
 
+		this.fg.controls['ticketID'].setValue(this.editTicket.ticketID);
 		this.fg.controls['title'].setValue(this.editTicket.title);
 		this.fg.controls['description'].setValue(this.editTicket.description);
 		this.fg.controls['projectID'].setValue(this.editTicket.projectName);
@@ -89,8 +90,8 @@ export class TicketEditComponent implements OnInit {
 		this.fg.controls['statusID'].setValue(this.editTicket.statusText);
 		//this.fg.controls['commentText']
 		// this.fg.controls['description']
-		this.AddComment();
-		this.AddComment();
+		//this.AddComment();
+		//this.AddComment();
 	}
 
 	initComment() {
@@ -106,9 +107,16 @@ export class TicketEditComponent implements OnInit {
 		control.push(this.initComment());
 	}
 
-onEdit(editRequest: any) {
-alert('Need to add edit save logic');
+onEdit() {
+
+try { 
+	console.log(this.fg.value);
+this.service.EditTicket(this.fg.value);
 this.router.navigate(['tickets/ticketsopen']);
+}
+catch(err) {
+	alert(err);
+}
 
 }
 

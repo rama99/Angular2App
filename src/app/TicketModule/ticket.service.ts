@@ -158,6 +158,26 @@ export class TicketService
 		}
 	}
 
+	EditTicket(ticket: TicketRequest) {
+
+		let ediItem:Array<TicketResponse> = this.TicketsCollection.filter( (e:TicketRequest) => {
+			return e.ticketID == ticket.ticketID;
+		});
+
+		ediItem[0].title = ticket.title;
+		ediItem[0].description = ticket.description;	
+		ediItem[0].projectName = ticket.projectID;
+		ediItem[0].statusText = ticket.statusID;
+		ediItem[0].severityName = ticket.severityID;
+
+		let commentID: number = ediItem[0].comments.length + 1;
+		ticket.comments[0].commentID = commentID;
+		ticket.comments[0].commentDate = new Date();
+
+		ediItem[0].comments.push(ticket.comments[0]);
+
+	}
+
 	private GetNewTicketID():number {
 		return this.TicketsCollection.length + 1;
 	}	

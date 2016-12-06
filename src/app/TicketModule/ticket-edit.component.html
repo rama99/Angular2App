@@ -7,7 +7,7 @@
 </ul>
 </div>
 
-<form  [formGroup]="fg" (ngSubmit)="onEdit(fg.value)">
+<form  [formGroup]="fg" (ngSubmit)="onEdit()">
   <div class="form-group">
     <label for="title"><h3>Title</h3></label>
      <input type="text" id="title" class="form-control" formControlName="title">
@@ -40,11 +40,12 @@
   </div>
 
   <div *ngFor="let comment of editTicket.comments">
-	{{comment.commentText}}
+   <h3>[ {{comment.commentDate | date}} ]</h3> 
+   <h3>{{comment.commentText}}</h3>
   </div>
 
   <div class="form-group">
-    <label for="comments"><h3>Comments</h3></label>    
+    <label for="comments"><h3>Add new Comment</h3></label>    
     <textarea id="comments" class="form-control" [formControl]="fg.get('comments').at(0).get('commentText')"></textarea>
   </div>
 
