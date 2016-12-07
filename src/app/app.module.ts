@@ -1,7 +1,7 @@
 import { BrowserModule , Title } from '@angular/platform-browser';
 import { NgModule  } from '@angular/core';
 import { RouterModule , 
-         CanActivate } from '@angular/router';
+         CanActivate } from '@angular/router';     
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login.component';

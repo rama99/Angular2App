@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
+import { AlertModule  } from 'ng2-bootstrap/ng2-bootstrap';    
 
 import { MenuComponent } from './menu.component'
 
@@ -14,6 +15,7 @@ exports:[
           ReactiveFormsModule ,
           HttpModule , 
           CommonModule,
+          AlertModule,
           MenuComponent],
 declarations:[MenuComponent],
 providers:[]
